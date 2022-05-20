@@ -5,12 +5,18 @@ import renderToDom from '../scripts/helpers/renderToDom';
 const lyricsOnDom = (artist, song) => {
   // this is a promise.
   getLyrics(artist, song).then((response) => {
-    const domstring = `<div class="card bg-dark text-white">
-  <img src="https://cdn.pixabay.com/photo/2017/10/11/23/35/musical-background-2842924_960_720.jpg" alt="music background" class="card-img">
-  <div class="card-img-overlay">
-    <h5 id="artistTitle"></h5>
-    <p class="lyrics">${response.lyrics}</p>
+    const domstring = `<div class="d-flex justify-content-center align-items-center container ">
+    <div class="card">
+  <div id="cardTitle">
+    Lyrics
   </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p class="lyrics">${response.lyrics}</p>
+      <footer id="artistTitle" class="blockquote-footer"></footer>
+    </blockquote>
+  </div>
+</div>
 </div>`;
     renderToDom('#lyricsDiv', domstring);
   });
